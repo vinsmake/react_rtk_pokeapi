@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useGetPokemonByIdQuery, useGetPokemonListQuery } from "./store/api/pokeapi"
+import { useGetPokemonByIdQuery } from "./store/api/pokeapi"
 
 export const App = () => {
-
-  //const {data: pokemonList, isLoading} = useGetPokemonListQuery()
 
   const [pokemonId, setPokemonId] = useState(1);
   const { data: pokemon, isLoading } = useGetPokemonByIdQuery(pokemonId)
@@ -22,15 +20,6 @@ export const App = () => {
 
         <h2>Estado: {isLoading ? 'Cargando...' : '¡Mostrando Pokémon!'}</h2>
 
-        {/*       <ul>
-        {pokemonList?.results.map((pokemon) => (
-          <li key={pokemon.name}>
-            <h2>{pokemon.name}</h2>
-            <img src={`https://img.pokemondb.net/artwork/large/${pokemon.name}.jpg`} alt={pokemon.name} />
-          </li>
-        ))} 
-      </ul> */}
-
         {pokemon && (
           <>
             <h2>{pokemon.name}</h2>
@@ -38,6 +27,8 @@ export const App = () => {
           </>
 
         )}
+
+        
         <button onClick={previousId} disabled={pokemonId <= 1}>
           Previous
         </button>

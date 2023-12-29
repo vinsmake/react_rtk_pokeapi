@@ -12,17 +12,13 @@ export const pokeApi = createApi({
 
     /* Endpoints (actions) */
     endpoints: (builder) => ({
-        getPokemonList: builder.query({
-            /* Prácticamente, tomamos la baseURL y concatenamos /pokemonList */
-            query: () => 'pokemon?limit=20&offset=0'
-        }),
         getPokemonById: builder.query({
-            /* Prácticamente, tomamos la baseURL y concatenamos /pokemonList */
+            /* Prácticamente, tomamos la baseURL y concatenamos /pokemon/${id} */
             query: (pokemonId) => `pokemon/${pokemonId}`
-        }),
+        })
     })
 
 })
 
 /* Lo que estamos regresando */
-export const { useGetPokemonListQuery, useGetPokemonByIdQuery } = pokeApi
+export const { useGetPokemonByIdQuery } = pokeApi
